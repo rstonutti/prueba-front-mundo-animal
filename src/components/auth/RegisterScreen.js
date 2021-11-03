@@ -1,29 +1,51 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
 
 export const RegisterScreen = () => {
+    
+    const [ formValues, handleInputChange ] = useForm({
+        usuario: '',
+        correo: '',
+        password: ''
+    })
+
+    const { usuario, correo, password } = formValues
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        console.log( formValues )
+    }
+
     return (
         <div>
             <h3 className="mb-3 fw-bold text-center">RegisterScreen</h3>
 
-            <form className="text-center">
+            <form onSubmit={ handleSubmit } className="text-center">
                 <input
-                    class="form-control w-auto m-2"
+                    className="form-control w-auto m-2"
                     type="text"
                     placeholder="usuario"
                     name="usuario"
+                    value={usuario}
+                    onChange={handleInputChange}
                 />
                 <input
-                    class="form-control w-auto m-2"
+                    className="form-control w-auto m-2"
                     type="email"
                     placeholder="correo"
                     name="correo"
+                    value={correo}
+                    onChange={handleInputChange}
                 />
                 <input
-                    class="form-control w-auto m-2"
+                    className="form-control w-auto m-2"
                     type="password"
                     placeholder="password"
                     name="password"
+                    value={password}
+                    onChange={handleInputChange}
                 />
 
                 <button
@@ -34,7 +56,7 @@ export const RegisterScreen = () => {
                 </button>
                 <div className="mt-1">
                     <Link
-                        class="text-decoration-none"
+                        className="text-decoration-none"
                         to="/auth/login"
                     >
                         ¿Ya tienes una cuenta?
