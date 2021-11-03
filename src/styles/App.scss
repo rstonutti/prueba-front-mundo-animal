@@ -1,0 +1,39 @@
+//Importaciones
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400&display=swap');
+
+//Variables
+
+//Colores
+
+$primero: #035f6c;
+$segundo: #1a8fc4;
+$tercero: #7ce9fe;
+$cuarto : #97fbc5;
+$quinto : #51edc6;
+$sexto  : #ef6101;
+
+$primary: $primero;
+$secondary: $segundo;
+$success: $tercero;
+$danger: $sexto;
+$warning: $quinto;
+$info: $cuarto;
+
+//Fuentes
+
+$font-family: 'Raleway', sans-serif;
+
+$font-family-base: $font-family;
+
+//CSS
+
+nav {
+    font-weight: bold;
+}
+
+.mt-1 a{
+    font-size: small;
+}
+
+@import "bootstrap";
