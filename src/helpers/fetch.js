@@ -1,4 +1,4 @@
-const baseUrl = process.env.API_URL;
+const baseUrl = 'https://equipo-server.herokuapp.com' || process.env.API_URL;
 
 const fetchSinToken = ( endpoint, data, method = 'GET' ) => {
     const url = `${baseUrl}/${endpoint}`;

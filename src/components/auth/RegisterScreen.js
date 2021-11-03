@@ -1,20 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
+import { fetchSinToken } from '../../helpers/fetch'
 
 export const RegisterScreen = () => {
     
     const [ formValues, handleInputChange ] = useForm({
-        usuario: '',
-        correo: '',
+        nombre_usuario: '',
+        email: '',
         password: ''
     })
 
-    const { usuario, correo, password } = formValues
+    const { nombre_usuario, email, password } = formValues
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
 
+        await fetchSinToken('registro', formValues, 'POST')
+        
         console.log( formValues )
     }
 
@@ -26,17 +29,17 @@ export const RegisterScreen = () => {
                 <input
                     className="form-control w-auto m-2"
                     type="text"
-                    placeholder="usuario"
-                    name="usuario"
-                    value={usuario}
+                    placeholder="nombre_usuario"
+                    name="nombre_usuario"
+                    value={nombre_usuario}
                     onChange={handleInputChange}
                 />
                 <input
                     className="form-control w-auto m-2"
                     type="email"
-                    placeholder="correo"
-                    name="correo"
-                    value={correo}
+                    placeholder="email"
+                    name="email"
+                    value={email}
                     onChange={handleInputChange}
                 />
                 <input
