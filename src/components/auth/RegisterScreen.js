@@ -1,24 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+//import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { fetchSinToken } from '../../helpers/fetch'
+import Swal from 'sweetalert2'
 
 export const RegisterScreen = () => {
+
+    const history = useHistory()
     
-    const [ formValues, handleInputChange ] = useForm({
+    const [ formRegisterValues, handleInputChange ] = useForm({
         nombre_usuario: '',
         email: '',
         password: ''
     })
 
-    const { nombre_usuario, email, password } = formValues
+    const { nombre_usuario, email, password } = formRegisterValues
 
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        await fetchSinToken('registro', formValues, 'POST')
+        const resp = await fetchSinToken('registro', formRegisterValues, 'POST')
         
-        console.log( formValues )
+        const body = await resp.json()
+
+        if(body.ok){
+            localStorage.setItem('token', body.token)
+            localStorage.setItem('token-init-date', new Date().getTime())
+
+            history.push('/auth/login')
+        } else {
+            Swal('Error', body.msg, 'error')
+        }
+        
     }
 
     return (
