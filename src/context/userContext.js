@@ -4,7 +4,11 @@ const Context = React.createContext({})
 
 export const UserContextProvider = ({ children }) => {
 
-    const [jwt, setJWT] = useState(null)
+    //cambiar por localStorage para que la sesion permanezca cuando el navegador se cierre.
+
+    const [jwt, setJWT] = useState(
+        () => window.sessionStorage.getItem('x-token')
+    )
 
     return (
         <Context.Provider value={{ jwt, setJWT }}>

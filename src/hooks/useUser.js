@@ -13,6 +13,8 @@ const useUser = () => {
         const body = await resp.json()
 
         const { token } = body
+        
+        window.sessionStorage.setItem('x-token', token)
 
         setJWT(token)
 
