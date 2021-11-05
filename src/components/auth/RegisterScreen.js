@@ -7,8 +7,8 @@ import Swal from 'sweetalert2'
 export const RegisterScreen = () => {
 
     const history = useHistory()
-    
-    const [ formRegisterValues, handleInputChange ] = useForm({
+
+    const [formRegisterValues, handleInputChange] = useForm({
         nombre_usuario: '',
         email: '',
         password: ''
@@ -16,29 +16,34 @@ export const RegisterScreen = () => {
 
     const { nombre_usuario, email, password } = formRegisterValues
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         const resp = await fetchSinToken('registro', formRegisterValues, 'POST')
-        
+
         const body = await resp.json()
 
-        if(body.ok){
+        if (body.msg) {
             localStorage.setItem('token', body.token)
             localStorage.setItem('token-init-date', new Date().getTime())
 
-            history.push('/auth/login')
+            console.log(body.msg)
+
+            return new Swal('Bien hecho', body.msg, 'success')
+
+            //history.push('/auth/login')
         } else {
-            Swal('Error', body.msg, 'error')
+            new Swal('Error', body.errores[0].msg, 'error')
+            console.log(body.errores)
         }
-        
+
     }
 
     return (
         <div>
             <h3 className="mb-3 fw-bold text-center">RegisterScreen</h3>
 
-            <form onSubmit={ handleSubmit } className="text-center">
+            <form onSubmit={handleSubmit} className="text-center">
                 <input
                     className="form-control w-auto m-2"
                     type="text"

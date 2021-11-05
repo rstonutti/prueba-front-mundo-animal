@@ -5,20 +5,21 @@ import {
     Route,
     Redirect,
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
+import useUser from '../../hooks/useUser';
 
 import logo from '../../img/Logo.svg'
 
 export const NavBar = () => {
 
-    const logueado = false
+    const { logueado, logout } = useUser()
 
     return (
         <>
             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">
-                        <img className="mx-2" src={ logo } alt="Mundo Animal" width="35px"/>
+                        <img className="mx-2" src={logo} alt="Mundo Animal" width="35px" />
                         <span>mundo animal</span>
                     </Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,14 +38,14 @@ export const NavBar = () => {
                             <li className="nav-item">
                                 {
                                     logueado ?
-                                        <Link className="nav-link" to="/auth/logout">Cerrar Sesión</Link>
+                                        <Link className="nav-link" to="/" onClick={logout}>Cerrar Sesión</Link>
                                         : <Link className="nav-link" to="/auth/login">Iniciar Sesión</Link>
                                 }
                             </li>
                             <li className="nav-item">
-                                {   
+                                {
                                     logueado ? null : //Colocar user name!!!
-                                    <Link className="nav-link" to="/auth/register">Registrarse</Link>
+                                        <Link className="nav-link" to="/auth/register">Registrarse</Link>
                                 }
                             </li>
                         </ul>

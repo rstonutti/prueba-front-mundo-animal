@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect,
+    Link
 } from "react-router-dom";
 
 import { AuthRouter } from "./AuthRouter";
@@ -39,16 +39,16 @@ export const AppRouter = () => {
     return (
         <Router>
             <div>
-                <NavBar/>
+                <NavBar />
                 <Switch>
-                    <Route 
+                    <Route
                         path="/auth"
-                        component={ AuthRouter }
+                        component={AuthRouter}
                     />
                     <Route
                         exact
                         path="/"
-                        component={ HomeScreen }
+                        component={HomeScreen}
                     />
                     <Redirect to="/auth/login" />
                 </Switch>

@@ -1,28 +1,36 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { fetchSinToken } from '../../helpers/fetch'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import Swal from 'sweetalert2'
+import useUser from '../../hooks/useUser'
 
 export const LoginScreen = () => {
 
-    const [ formLoginValues, handleInputChange ] = useForm({
+    const { logueado, login } = useUser()
+
+    const history = useHistory()
+
+    const [formLoginValues, handleInputChange] = useForm({
         email: '',
         password: ''
     })
 
     const { email, password } = formLoginValues
 
-    const handleLogin = async(e) => {
+    useEffect(() => {
+        if (logueado) history.push('/')
+    }, [logueado, history])
+
+    const handleLogin = async (e) => {
         e.preventDefault()
 
-        const resp = await fetchSinToken('registro', formLoginValues, 'POST')
+        login(formLoginValues)
 
+        /* 
         console.log( formLoginValues ) 
-        
-        const body = await resp.json()
 
         console.log(body)
 
@@ -31,7 +39,7 @@ export const LoginScreen = () => {
             localStorage.setItem('token-init-date', new Date().getTime() )
         } else {
             Swal.fire('Error', body.msg, 'error')
-        }
+        } */
 
     }
 
@@ -39,7 +47,7 @@ export const LoginScreen = () => {
         <>
             <h3 className="mb-3 fw-bold text-center">LoginScreen</h3>
 
-            <form onSubmit={ handleLogin } className="text-center">
+            <form onSubmit={handleLogin} className="text-center">
                 <input
                     className="form-control w-auto m-2"
                     type="email"
@@ -63,18 +71,18 @@ export const LoginScreen = () => {
                 >
                     Ingresar
                 </button>
-                <button 
+                <button
                     className="btn btn-info m-2"
-                    type="submit" 
+                    type="submit"
                 >
                     <FontAwesomeIcon icon={faGoogle} /> Google
                 </button>
                 <div className="mt-1">
-                    <Link 
+                    <Link
                         className="text-decoration-none"
                         to="/auth/register"
                     >
-                        Regístrate aquí 
+                        Regístrate aquí
                     </Link>
                 </div>
             </form>
