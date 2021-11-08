@@ -12,6 +12,8 @@ import { HomeScreen } from "../components/App/HomeScreen";
 import { fetchConToken } from "../helpers/fetch";
 import Swal from "sweetalert2";
 import { NavBar } from "../components/layout/NavBar";
+import { AdopcionScreen } from "../components/App/AdopcionScreen";
+import { BusquedaScreen } from "../components/App/BusquedaScreen";
 
 
 
@@ -49,6 +51,16 @@ export const AppRouter = () => {
                         exact
                         path="/"
                         component={HomeScreen}
+                    />
+                    <Route
+                        exact
+                        path="/adopciones"
+                        component={AdopcionScreen}
+                    />
+                    <Route
+                        exact
+                        path="/busquedas"
+                        component={BusquedaScreen}
                     />
                     <Redirect to="/auth/login" />
                 </Switch>

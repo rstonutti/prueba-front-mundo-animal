@@ -21,7 +21,7 @@ export const LoginScreen = () => {
     const { email, password } = formLoginValues
 
     useEffect(() => {
-        if (logueado) history.push('/')
+        if (logueado) history.replace('/')
     }, [logueado, history])
 
     const handleLogin = async (e) => {

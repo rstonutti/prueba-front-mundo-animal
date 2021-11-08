@@ -1,18 +1,25 @@
-//import React, { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { fetchSinToken } from '../../helpers/fetch'
 import Swal from 'sweetalert2'
+import useUser from '../../hooks/useUser'
 
 export const RegisterScreen = () => {
 
     const history = useHistory()
+
+    const { logueado } = useUser()
 
     const [formRegisterValues, handleInputChange] = useForm({
         nombre_usuario: '',
         email: '',
         password: ''
     })
+
+    useEffect(() => {
+        if (logueado) history.replace('/')
+    }, [logueado, history])
 
     const { nombre_usuario, email, password } = formRegisterValues
 
