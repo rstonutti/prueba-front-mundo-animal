@@ -1,26 +1,33 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from 'react'
+import { getPublication } from '../helpers/getPublication';
 
 
-export const useFetch = (url) => {
+export const useFetch = ( tipo ) => {
+    
+    const [state, setState] = useState({
+        data: [],
+        loading: true
+    });
 
-    const [state, setstate] = useState({
-        data: null,
-        loading: true,
-        error: null
-    })
+    useEffect( () => {
 
-    useEffect(() => {
-        fetch(url)
-            .then(resp => resp.json())
-            .then(data => {
-
-                setstate({
-                    loading: false,
-                    error: null,
-                    data
-                })
+        getPublication( tipo )
+            .then( data => {
+                
+                setState({
+                    data,
+                    loading: false
+                });
             })
-    }, [url])
 
-    return state
+    }, [tipo])
+
+
+
+
+    return state; // { data:[], loading: true };
+
+
 }
+
+

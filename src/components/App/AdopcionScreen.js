@@ -1,48 +1,88 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import Card from '../layout/Card'
+import axios from 'axios';
+
+const baseURI = 'http://localhost:5000/'
+
+const token = window.localStorage.getItem('x-token') || '';
+
+const getPublication = async () => {
+    try {
+        const response = await axios(`${baseURI}adopcion/listar`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+
+        return response
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 export const AdopcionScreen = () => {
 
+    const [cargando, SetCargando] = useState(true)
+
     const [publicacion, setPublicacion] = useState([])
 
-    const getPublicacion = async() => {
-        const url = 'http://localhost:5000/adopcion/listar?desde=0&limite=5'
-        const token = localStorage.getItem('x-token');
-        
-        const resp = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'x-token': token
+    useEffect(() => {
+        const cargarPublicacion = async () => {
+            const response = await getPublication()
+            console.log(response)
+            if (response.status === 200) {
+                setPublicacion(response.data.publicaciones)
             }
-        });
+            SetCargando(false)
+        }
 
-        const data = await resp.json()
+        cargarPublicacion()
 
-        setPublicacion(data)
-        
-        console.log(publicacion)
+    }, [])
 
+    console.log(publicacion)
+
+    if (cargando) {
+        return <div>Cargando papus...  </div>
+    }
+
+    if (!publicacion.length) {
+        return <div>No papí, ya adoptaron todo...  </div>
     }
 
     return (
         <div>
+
+
             <div className="row">
 
-            {
-                publicacion.length>0 ? publicacion.map(
-                <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
-                    <div className="card">
-                        <a className="card-body" href='/#'>
-                            <h5 className="card-title">Special title treatment</h5>
-                            <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            <a href="/#" className="btn btn-primary">Go somewhere</a>
-                        </a>
-                    </div>
-                </div>) : <p>No se han cargado los datos</p>
-            }
 
+
+
+
+                {
+                    publicacion.map(({tipo, mascota: {nombre, especie}, _id}) => {
+                        return (
+
+                            <div key={_id} className="col-sm-3">
+                                <div className="card mt-4">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{nombre}</h5>
+                                        <p className="card-text">{especie}</p>
+                                        <a href="/#" className="btn btn-primary">{tipo}</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        )
+                    })
+
+                }
             </div>
+
         </div>
     )
 }
