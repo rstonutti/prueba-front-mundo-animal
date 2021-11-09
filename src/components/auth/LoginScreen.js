@@ -14,11 +14,11 @@ export const LoginScreen = () => {
     const history = useHistory()
 
     const [formLoginValues, handleInputChange] = useForm({
-        email: '',
-        password: ''
+        nombre: 'rstonutti',
+        contrasenia: 'qwerty12345'
     })
 
-    const { email, password } = formLoginValues
+    const { nombre, contrasenia } = formLoginValues
 
     useEffect(() => {
         if (logueado) history.replace('/')
@@ -50,18 +50,18 @@ export const LoginScreen = () => {
             <form onSubmit={handleLogin} className="text-center">
                 <input
                     className="form-control w-auto m-2"
-                    type="email"
-                    placeholder="email"
-                    name="email"
-                    value={email}
+                    type="text"
+                    placeholder="nombre"
+                    name="nombre"
+                    value={nombre}
                     onChange={handleInputChange}
                 />
                 <input
                     className="form-control w-auto m-2"
                     type="password"
-                    placeholder="password"
-                    name="password"
-                    value={password}
+                    placeholder="contraseña"
+                    name="contrasenia"
+                    value={contrasenia}
                     onChange={handleInputChange}
                 />
 

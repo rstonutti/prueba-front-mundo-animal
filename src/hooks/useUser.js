@@ -14,7 +14,7 @@ const useUser = () => {
 
         const { token } = body
         
-        window.sessionStorage.setItem('x-token', token)
+        window.localStorage.setItem('x-token', token)
 
         setJWT(token)
 
@@ -24,7 +24,7 @@ const useUser = () => {
 
     const logout = useCallback(() => {
 
-        window.sessionStorage.removeItem('x-token')
+        window.localStorage.removeItem('x-token')
 
         setJWT(null)
     }, [setJWT])

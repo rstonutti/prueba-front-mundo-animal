@@ -3,7 +3,7 @@ const baseUrl = 'https://equipo-server.herokuapp.com'
 const localUrl = 'http://localhost:5000'
 
 const fetchSinToken = (endpoint, data, method = 'GET') => {
-    const url = `${baseUrl}/${endpoint}`;
+    const url = `${localUrl}/${endpoint}`;
 
     if (method === 'GET') {
         return fetch(url);
@@ -19,8 +19,8 @@ const fetchSinToken = (endpoint, data, method = 'GET') => {
 }
 
 const fetchConToken = (endpoint, data, method = 'GET') => {
-    const url = `${baseUrl}/${endpoint}`;
-    const token = localStorage.getItem('x-token') || '';
+    const url = `${localUrl}/${endpoint}`;
+    const token = window.localStorage.getItem('x-token') || '';
 
     if (method === 'GET') {
         return fetch(url, {

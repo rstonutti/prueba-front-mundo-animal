@@ -2,42 +2,79 @@ import React from 'react'
 
 const Card = () => {
     return (
-        <div className='row'>
-            <a className="card col" href="/#">
-                {/* <img src="..." className="card-img-top" alt="..."/> */}
-                <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div className="row">
+{/*             <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
                 </div>
-            </a>
-            <a className="card col" href="/#">
-                {/* <img src="..." className="card-img-top" alt="..."/> */}
-                <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
                 </div>
-            </a>
-            <a className="card col" href="/#">
-                {/* <img src="..." className="card-img-top" alt="..."/> */}
-                <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
                 </div>
-            </a>
-            <a className="card col" href="/#">
-                {/* <img src="..." className="card-img-top" alt="..."/> */}
-                <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
                 </div>
-            </a>
-            <a className="card col" href="/#">
-                {/* <img src="..." className="card-img-top" alt="..."/> */}
-                <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
                 </div>
-            </a>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
+                </div>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
+                </div>
+            </div>
+            <div className="mb-4 col-xl-2 col-4 col-sm-4 col-md-4">
+                <div className="card">
+                    <a className="card-body" href='/#'>
+                        <h5 className="card-title">Special title treatment</h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="/#" className="btn btn-primary">Go somewhere</a>
+                    </a>
+                </div>
+            </div> */}
         </div>
     );
 };
